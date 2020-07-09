@@ -1,0 +1,44 @@
+{
+    "release_adminportal":"2.4.0",
+    "release_kundenportal":"2.4.0",
+    "release_server":"latest",
+    "domain":"openolitor.ch",
+    "s3": {
+          "accessKey": "openolitor",
+            "endpoint": "s3:9000",
+            "secret": "uGuRR53g4uR6c8R4yCxfNwFF"
+    },
+    "db": {
+            "databaseRootPassword": "AaFpqD6uCY5F"
+    },
+    "csas": [{
+        "name": "csa1",
+        "buchhaltung": {
+            "referenznummer": "123456",
+            "teilnehmernummer": "333333"
+        },
+        "db": {
+            "databaseUser": "user_csa1",
+            "databasePassword": "ebAwP4c65dqW",
+            "databaseName": "csa1"
+        },
+        "pdfCreator": {
+            "endpoint": "http://pdf-tool:8080/lool/convert-to/pdf"
+        },
+        "security":{
+          "secondFactorAuth": "false"
+        },
+        "smtp": {
+            "bcc": "no-reply@openolitor.ch",
+            "endpoint": "localhost",
+            "from": "no-reply@openolitor.ch",
+            "maxChunkSize": "1m",
+            "numberOfRetries": "3",
+            "password": "1234",
+            "port": "1025",
+            "security": "STARTTLS",
+            "sendEmail": "false",
+            "user": "no-reply@openolitor.ch"
+        }
+    }]
+}
