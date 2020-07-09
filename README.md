@@ -14,10 +14,9 @@ Here you find how to achieve this:
  1.  Make sure you have [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) available on your host.
  2.  In a terminal window clone this repository: `git clone https://github.com/OpenOlitor/openolitor-docker-compose.git`
  3.  Change into the folder `cd openolitor-docker-compose`
- 4.  Create all images: `docker-compose create db s3`
- 5.  Bring up MariaDB and Minio (S3): `docker-compose start db s3` (wait a minute so the DB schema creation is done)
- 6.  Bring up everything else: `docker-compose start`
- 7.  Use your favorite browser to open [http://localhost:8080](http://localhost:8080)
+ 4.  Create and start MariaDB and Minio (S3): `docker-compose up -d db s3` (wait a minute so the DB schema creation is done)
+ 5.  Bring up everything else: `docker-compose up -d`
+ 6.  Use your favorite browser to open [http://localhost:8080](http://localhost:8080)
 
 Peace of cake.
 
