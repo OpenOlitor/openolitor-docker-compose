@@ -7,6 +7,8 @@
     "airbreakApiKey": "[errbit_api_key]",
     "airbreakUrl": "https://errbit.host/",
     "smtpProxy": true,
+    "exposeSmtpProxy": true,
+    "exposePdfTool": true,
     "s3": {
           "accessKey": "openolitor",
             "endpoint": "s3:9000",

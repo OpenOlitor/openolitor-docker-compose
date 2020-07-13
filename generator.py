@@ -84,7 +84,7 @@ def createTemplates(environment):
                              release_kundenportal = environmentDescription["release_kundenportal"],
                              airbreakApiKey = environmentDescription["airbreakApiKey"],
                              airbreakUrl = environmentDescription["airbreakUrl"],
-                             env = environmentDescription["env"],)
+                             env = environmentDescription["env"])
     with open("./config/client/kundenportal/config." + environment + ".js", "w") as dockerKundenPortalConfig:
         dockerKundenPortalConfig.write(output)
 
@@ -102,7 +102,10 @@ def createTemplates(environment):
     env = Environment(loader=file_loader)
     template = env.get_template('nginx.template.conf')
 
-    output = template.render(csas = environmentDescription["csas"])
+    output = template.render(csas = environmentDescription["csas"],
+                             smtpProxy = environmentDescription["smtpProxy"],
+                             exposeSmtpProxy = environmentDescription["exposeSmtpProxy"],
+                             exposePdfTool = environmentDescription["exposePdfTool"])
     with open("./config/nginx/nginx." + environment + ".conf", "w") as openolitorNginxConfigFile:
         openolitorNginxConfigFile.write(output)
 
