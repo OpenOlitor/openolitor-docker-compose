@@ -36,7 +36,7 @@ services:
     # server settings
       - ./config/server/openolitor-server.dev.conf:/etc/openolitor-server/application.conf
       - ./config/server/openolitor-server-logback.xml:/etc/openolitor-server/logback.xml
-      - ./log/server/akka.log:/var/log/openolitor-server/akka.log
+      - ./log/server/:/var/log/openolitor-server/
     depends_on:
     - db
     - s3
@@ -70,7 +70,8 @@ services:
     ports:
       - "80:9000"
     volumes:
-    - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/nginx/smtp-proxy-htpasswd:/etc/nginx/htpasswd
     depends_on:
       - client-admin
       - client-kundenportal
@@ -80,3 +81,10 @@ services:
     image: eugenmayer/jodconverter:rest
     ports:
       - "9040:8080"
+  
+  smtp-proxy:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+  

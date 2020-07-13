@@ -68,7 +68,7 @@ def createTemplates(environment):
     output = template.render(csas = environmentDescription["csas"],
                              domain = environmentDescription["domain"],
                              release_adminportal = environmentDescription["release_adminportal"],
-                             airbreakApiKey = environmentDescription["airbreakApiKey"],
+                             frontendAirbreakApiKey = environmentDescription["frontendAirbreakApiKey"],
                              airbreakUrl = environmentDescription["airbreakUrl"],
                              env = environmentDescription["env"])
     with open("./config/client/admin/config." + environment + ".js", "w") as dockerAdminPortalConfig:
@@ -82,7 +82,7 @@ def createTemplates(environment):
     output = template.render(csas = environmentDescription["csas"],
                              domain = environmentDescription["domain"],
                              release_kundenportal = environmentDescription["release_kundenportal"],
-                             airbreakApiKey = environmentDescription["airbreakApiKey"],
+                             frontendAirbreakApiKey = environmentDescription["frontendAirbreakApiKey"],
                              airbreakUrl = environmentDescription["airbreakUrl"],
                              env = environmentDescription["env"])
     with open("./config/client/kundenportal/config." + environment + ".js", "w") as dockerKundenPortalConfig:
@@ -93,7 +93,12 @@ def createTemplates(environment):
     env = Environment(loader=file_loader)
     template = env.get_template('openolitor-server.template.conf')
 
-    output = template.render(csas = environmentDescription["csas"],s3 = environmentDescription["s3"])
+    output = template.render(csas = environmentDescription["csas"],
+                             s3 = environmentDescription["s3"],
+                             backendAirbreakApiKey = environmentDescription["backendAirbreakApiKey"],
+                             airbreakUrlShort = environmentDescription["airbreakUrlShort"],
+                             domain = environmentDescription["domain"],
+                             )
     with open("./config/server/openolitor-server." + environment + ".conf", "w") as   openolitorServerConfigFile:
         openolitorServerConfigFile.write(output)
 
