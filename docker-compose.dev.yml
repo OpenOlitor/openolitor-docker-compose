@@ -8,7 +8,7 @@ services:
       - MYSQL_ROOT_PASSWORD=AaFpqD6uCY5F
     volumes:
       - ./data/mysql:/var/lib/mysql
-      - ./config/db/db_schema.prod.sql:/docker-entrypoint-initdb.d/db_schema.sql
+      - ./config/db/db_schema.dev.sql:/docker-entrypoint-initdb.d/db_schema.sql
     ports:
       - "3306:3306"
   s3:
@@ -34,7 +34,7 @@ services:
     restart: unless-stopped
     volumes:
     # server settings
-      - ./config/server/openolitor-server.prod.conf:/etc/openolitor-server/application.conf
+      - ./config/server/openolitor-server.dev.conf:/etc/openolitor-server/application.conf
       - ./config/server/openolitor-server-logback.xml:/etc/openolitor-server/logback.xml
       - ./log/server/akka.log:/var/log/openolitor-server/akka.log
     depends_on:
@@ -54,7 +54,7 @@ services:
       - "9100:80"
     restart: unless-stopped
     volumes:
-      - ./config/client/admin/config.prod.js:/usr/share/nginx/html/environments/config.js
+      - ./config/client/admin/config.dev.js:/usr/share/nginx/html/environments/config.js
     ## depending on network setup
 
   client-kundenportal:
@@ -63,7 +63,7 @@ services:
       - "9110:80"
     restart: unless-stopped
     volumes:
-      - ./config/client/kundenportal/config.prod.js:/usr/share/nginx/html/environments/config.js
+      - ./config/client/kundenportal/config.dev.js:/usr/share/nginx/html/environments/config.js
 
   nginx:
     image: nginx:latest

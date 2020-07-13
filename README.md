@@ -59,6 +59,13 @@ The following services are started:
  *  server: OpenOlitor Backend with all the magic (Scala application running on OpenJDK)
  *  pdf-tool: [Java OpenDocument Converter](https://github.com/EugenMayer/docker-image-jodconverter) providing a REST-API to transform ODF documents into PDF
  *  nginx: Webserver providing access to all services through one interface (Port 8080 on localhost; Port 80 for servers)
+ *  smtp-proxy: mailhog collecting emails send by openolitor (see below)
+
+## Insights: Mail-Sending (SMTP)
+
+OpenOlitor can be used to send personalized emails. In order to not send unintended mails to recipient based on test data, we introduced [mailhog](https://github.com/mailhog/MailHog) as an SMTP collector and proxy if needed. This collects all mail send and you may see the mails on the provided web interface on localhost:8025.
+
+It makes sense to enable the smtp-proxy on all environments but production. The attribute `smtpProxy` in your environment configuration specifies, if the docker-compose configuration includes this service or not.
 
 ### Credits
 

@@ -1,5 +1,5 @@
 {
-    "env":"prod",
+    "env":"dev",
     "release_adminportal":"2.4.0",
     "release_kundenportal":"2.4.0",
     "release_server":"latest",
@@ -34,7 +34,7 @@
         },
         "smtp": {
             "bcc": "no-reply@openolitor.ch",
-            "endpoint": "localhost",
+            "endpoint": "smtp-proxy",
             "from": "no-reply@openolitor.ch",
             "maxChunkSize": "1m",
             "numberOfRetries": "3",
