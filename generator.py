@@ -40,7 +40,13 @@ def createTemplates(environment):
 
     template = env.get_template('docker-compose.template.yml')
 
-    output = template.render(s3 = environmentDescription["s3"], csas = environmentDescription["csas"], release_adminportal = environmentDescription["release_adminportal"], release_kundenportal = environmentDescription["release_kundenportal"], release_server = environmentDescription["release_server"], db = environmentDescription["db"], environment = environment)
+    output = template.render(s3 = environmentDescription["s3"],
+                             csas = environmentDescription["csas"],
+                             release_adminportal = environmentDescription["release_adminportal"],
+                             release_kundenportal = environmentDescription["release_kundenportal"],
+                             release_server = environmentDescription["release_server"],
+                             db = environmentDescription["db"],
+                             environment = environment)
     with open("docker-compose." + environment + ".yml", "w") as dockerComposeFile:
         dockerComposeFile.write(output)
 
@@ -58,7 +64,12 @@ def createTemplates(environment):
     env = Environment(loader=file_loader)
     template = env.get_template('config.template.js')
 
-    output = template.render(domain = environmentDescription["domain"])
+    output = template.render(csas = environmentDescription["csas"],
+                             domain = environmentDescription["domain"],
+                             release_adminportal = environmentDescription["release_adminportal"],
+                             airbreakApiKey = environmentDescription["airbreakApiKey"],
+                             airbreakUrl = environmentDescription["airbreakUrl"],
+                             env = environmentDescription["env"])
     with open("./config/client/admin/config." + environment + ".js", "w") as dockerAdminPortalConfig:
         dockerAdminPortalConfig.write(output)
 
@@ -67,7 +78,12 @@ def createTemplates(environment):
     env = Environment(loader=file_loader)
     template = env.get_template('config.template.js')
 
-    output = template.render(domain = environmentDescription["domain"])
+    output = template.render(csas = environmentDescription["csas"],
+                             domain = environmentDescription["domain"],
+                             release_kundenportal = environmentDescription["release_kundenportal"],
+                             airbreakApiKey = environmentDescription["airbreakApiKey"],
+                             airbreakUrl = environmentDescription["airbreakUrl"],
+                             env = environmentDescription["env"],)
     with open("./config/client/kundenportal/config." + environment + ".js", "w") as dockerKundenPortalConfig:
         dockerKundenPortalConfig.write(output)
 
