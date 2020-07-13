@@ -45,6 +45,7 @@ def createTemplates(environment):
                              release_adminportal = environmentDescription["release_adminportal"],
                              release_kundenportal = environmentDescription["release_kundenportal"],
                              release_server = environmentDescription["release_server"],
+                             smtpProxy = environmentDescription["smtpProxy"],
                              db = environmentDescription["db"],
                              environment = environment)
     with open("docker-compose." + environment + ".yml", "w") as dockerComposeFile:

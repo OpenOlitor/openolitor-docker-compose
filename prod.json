@@ -1,8 +1,12 @@
 {
+    "env":"prod",
     "release_adminportal":"2.4.0",
     "release_kundenportal":"2.4.0",
     "release_server":"latest",
     "domain":"openolitor.ch",
+    "airbreakApiKey": "[errbit_api_key]",
+    "airbreakUrl": "https://errbit.host/",
+    "smtpProxy": true,
     "s3": {
           "accessKey": "openolitor",
             "endpoint": "s3:9000",

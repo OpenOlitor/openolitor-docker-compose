@@ -12,7 +12,6 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./config/db/db_schema.sql:/docker-entrypoint-initdb.d/db_schema.sql
-    ## depending on network setup
     ports:
       - "3306:3306"
   s3:
@@ -24,7 +23,6 @@ services:
       - MINIO_ACCESS_KEY=miniouserallcsa
       - MINIO_SECRET_KEY=thedefaultminiosecretneedstobechanged
     command: server /data
-    ## depending on network setup
     ports:
       - "9050:9000"
     healthcheck:
@@ -32,9 +30,6 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
-    # networks:
-    #   - openolitor
-    #   - traefik
 
   server:
     image: openolitor/openolitor-server
@@ -60,7 +55,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./config/client/admin/config.js:/usr/share/nginx/html/environments/config.js
-    ## depending on network setup
 
   client-kundenportal:
     image: openolitor/openolitor-client-kundenportal:2.4.0
@@ -84,9 +78,8 @@ services:
     ports:
       - "9040:8080"
 
-## depending on network setup
-# networks:
-#   openolitor:
-#   traefik_proxy:
-#     external:
-#       name: traefik_proxy
+  smtp-proxy:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
