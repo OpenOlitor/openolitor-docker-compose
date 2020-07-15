@@ -44,7 +44,7 @@ There is many different (cloud) environments docker compose may run on. Please s
  *  [Jelastic](docs/env-jelastic.md)
  *  [(Virtual) Server](docs/env-server.md)
 
-Good practise is:
+Good practice is:
 
  *  Configure a firewall: Don't expose the ports of the database, S3 and such to the outside.
 
