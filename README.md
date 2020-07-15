@@ -18,7 +18,7 @@ Here you find how to achieve this:
  5.  Bring up everything else: `docker-compose up -d`
  6.  Use your favorite browser to open [http://localhost:8080](http://localhost:8080)
 
-Peace of cake.
+Piece of cake.
 
 This will use the default [docker-compose.yml](docker-compose.yml).
 
