@@ -31,7 +31,7 @@ You want to configure OpenOlitor so one or multiple groups/[CSA](https://en.wiki
  1.  Make sure you have python3 and the [Jinja2](https://pypi.org/project/Jinja2/) library available on your host.
  2.  Copy the environment template [dev.json](dev.json) to the name of your choice: 'cp dev.json [your-env].json'
  3.  Edit the file and add all needed
- 4.  Call the generator `pyton3 generator.py [your-env]`
+ 4.  Call the generator `python3 generator.py [your-env]`
  5.  All configuration files are created, i.e. docker-compose.[your-env].yml
  6.  Use the new configuration by specifying the file using docker-compose: `docker-compose -f docker-compose.[your-env].yml start`
 
