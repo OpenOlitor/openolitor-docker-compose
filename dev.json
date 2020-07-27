@@ -17,7 +17,8 @@
             "secret": "uGuRR53g4uR6c8R4yCxfNwFF"
     },
     "db": {
-            "databaseRootPassword": "AaFpqD6uCY5F"
+            "databaseRootPassword": "AaFpqD6uCY5F",
+            "memLimit": "300m"
     },
     "csas": [{
         "name": "csa1",
