@@ -20,8 +20,8 @@ services:
     volumes:
       - ./data/s3:/data
     environment:
-      - MINIO_ACCESS_KEY=miniouserallcsa
-      - MINIO_SECRET_KEY=thedefaultminiosecretneedstobechanged
+      - MINIO_ACCESS_KEY=openolitor
+      - MINIO_SECRET_KEY=uGuRR53g4uR6c8R4yCxfNwFF
     command: server /data
     ports:
       - "9050:9000"
