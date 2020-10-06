@@ -5,10 +5,7 @@ services:
     image: mariadb
     restart: unless-stopped
     environment:
-      - MYSQL_DATABASE=csa1
-      - MYSQL_PASSWORD=thisDefaultUserPasswordMustBeChanedInProduction
       - MYSQL_ROOT_PASSWORD=ofCourseThisIsTrueForTheRootPasswordToo
-      - MYSQL_USER=dbusercsa1
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./config/db/db_schema.sql:/docker-entrypoint-initdb.d/db_schema.sql
