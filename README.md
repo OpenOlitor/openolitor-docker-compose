@@ -37,6 +37,8 @@ You want to configure OpenOlitor so one or multiple groups/[CSA](https://en.wiki
 
 You may want to fork this repo as a private repository so you can safely check in your configuration and the generated files.
 
+NOTE: if you are not using https, you will need to change the configuration to http (config/client/admin/config.[your-env].js and config/client/kundenportal/config.[your-env].js )
+
 ## Run on Server/Cloud-Environment
 
 There is many different (cloud) environments docker compose may run on. Please share your experiences and knowledge if you use another environment. Currently we provide some information about the following:
