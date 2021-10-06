@@ -32,6 +32,7 @@ Vorraussetzung ist ein laufender Root oder V-Server
 Hat man auf dem Server eventuell schon einen nginx am laufen kann man diesen auch nutzen, dazu muss man den Port von dem nginx Docker Container ändern damit kein Konflikt entsteht:
 * Hierzu die Datei `docker-compose.[ENV].yml` öffnen, den Bereich vom nginx Container suchen und hier die Ports von `80:9000` auf z. B. `8090:9000` ändern.
    - Hier ist zu beachten das der Port überschrieben wird, wenn man die Konfiguration mit dem python skript neu erstellt. Möchte man das nicht, muss der Port in der `docker-compose.template.yml` Datei geändert werden.
+   - Man kann `cert-bot` nutzen um sich ein Zertifikat bei let's encrypt erstellen zu lassen. Certbot ergänzt dann auch die Konfig für nginx.
 
 Hier eine Beispiel-Konfiguration:
 
@@ -176,6 +177,7 @@ Prerequisite is a running root or V-Server.
 If you already have a nginx running on your server you can use it, you have to change the port of the nginx docker container to avoid a conflict:
 * Open the file `docker-compose.[ENV].yml`, search the area of the nginx container and change the port from `80:9000` to e.g. `8090:9000`.
    - Please note that the port will be overwritten if you rebuild the configuration with the python script. If you don't want this, you have to change the port in the `docker-compose.template.yml` file.
+   - You can use `cert-bot` to get a certificate from let's encrypt. Certbot then also completes the config for nginx.
 
 Here is an example configuration:
 
