@@ -13,14 +13,14 @@ Vorraussetzung ist ein laufender Root oder V-Server
  1.  Am Server per ssh anmelden.
  2.  Nun muss das git Repo mit folgendem Befehl geklont werden: `git clone https://github.com/OpenOlitor/openolitor-docker-compose.git`
  3.  In das Verzeichnis wechseln `cd openolitor-docker-compose`
- 4.  Jetzt kann das environment dev template kopiert werden [dev.json](dev.json) kopiert werden und mit dem Namen `prod` versehen werden: `cp dev.json [ENV].json.[]`
+ 4.  Jetzt kann das environment dev template [dev.json](dev.json) kopiert werden und mit dem Namen `prod` versehen werden: `cp dev.json [ENV].json`
  5.  Jetzt kann die [ENV].json nach belieben bearbeitet werden.
      - hier können z.B. die release_Variablen auf "latest" gesetzt werden, wenn man immer die aktuelle letzte Version haben möchte.
-     - Der Domainname sollte eingepasst werden z. B. beispiel.de
+     - Der Domainname sollte angepasst werden z. B. beispiel.de
      - Die Passwörter sollten alle geändert werden.
      - Wichtig ist, dass man den selben Namen unter csas verwendet, wie auch die Subdomain heißt! Hier z. B. solawi-blubb
-     - weiter unten können die  smtp-Daten für den E-Mail-Versand eingegeben werden.
-       - Bei endpoint wird der smtp-Server eingetragen.
+     - weiter unten können die SMTP-Daten für den E-Mail-Versand eingegeben werden.
+       - Bei endpoint wird der SMTP-Server eingetragen.
  6.  Hat man alles angepasst, kann man mit `python3 generator.py -e [ENV]` die Konfigurations-Dateien erstellen
  7.  Alle Konfigurations-Dateien wurden erstellt wie z. B. docker-compose.[ENV].yml
  8.  Jetzt kann man die Container starten. Für den ersten Start sollte erstmal die Datenbank und der S3 Speicher alleine gestartet werden `docker-compose -f docker-compose.[ENV].yml up -d db s3`
