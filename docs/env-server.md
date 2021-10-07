@@ -18,7 +18,7 @@ Vorraussetzung ist ein laufender Root oder V-Server
      - hier können z.B. die release_Variablen auf "latest" gesetzt werden, wenn man immer die aktuelle letzte Version haben möchte.
      - Der Domainname sollte eingepasst werden z. B. beispiel.de
      - Die Passwörter sollten alle geändert werden.
-     - Wichtig ist das man den selben Namen unter csas verwendet, wie auch die Subdomain heißt! Hier z. B. solawi-blubb
+     - Wichtig ist, dass man den selben Namen unter csas verwendet, wie auch die Subdomain heißt! Hier z. B. solawi-blubb
      - weiter unten können die smtp Daten für den E-Mail versand eingegeben werden.
        - Bei endpoint wird der smtp-Server eingetragen.
  6.  Hat man alles angepasst kann man mit `python3 generator.py -e [ENV]` die Konfigurations-Dateien erstellen
