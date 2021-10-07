@@ -19,7 +19,7 @@ Vorraussetzung ist ein laufender Root oder V-Server
      - Der Domainname sollte eingepasst werden z. B. beispiel.de
      - Die Passwörter sollten alle geändert werden.
      - Wichtig ist, dass man den selben Namen unter csas verwendet, wie auch die Subdomain heißt! Hier z. B. solawi-blubb
-     - weiter unten können die smtp Daten für den E-Mail versand eingegeben werden.
+     - weiter unten können die  smtp-Daten für den E-Mail-Versand eingegeben werden.
        - Bei endpoint wird der smtp-Server eingetragen.
  6.  Hat man alles angepasst, kann man mit `python3 generator.py -e [ENV]` die Konfigurations-Dateien erstellen
  7.  Alle Konfigurations-Dateien wurden erstellt wie z. B. docker-compose.[ENV].yml
