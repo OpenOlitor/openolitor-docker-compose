@@ -32,7 +32,7 @@ Vorraussetzung ist ein laufender Root oder V-Server
 Hat man auf dem Server eventuell schon einen nginx am laufen, kann man diesen auch nutzen. Dazu muss man den Port von dem nginx Docker Container ändern, damit kein Konflikt entsteht:
 * Hierzu die Datei `docker-compose.[ENV].yml` öffnen, den Bereich vom nginx Container suchen und hier die Ports von `80:9000` auf z. B. `8090:9000` ändern.
    - Hier ist zu beachten, dass der Port überschrieben wird, wenn man die Konfiguration mit dem python skript neu erstellt. Möchte man das nicht, muss der Port in der `docker-compose.template.yml` Datei geändert werden.
-   - Man kann `cert-bot` nutzen um sich ein Zertifikat bei let's encrypt erstellen zu lassen. Certbot ergänzt dann auch die Konfig für nginx.
+   - Man kann `cert-bot` nutzen, um sich ein Zertifikat bei let's encrypt erstellen zu lassen. Certbot ergänzt dann auch die Konfig für nginx. Dazu muss certbot installiert sein und mit `certbot --nginx` wird man durch den Prozess geführt.
 
 Hier eine Beispiel-Konfiguration:
 
@@ -158,7 +158,7 @@ Prerequisite is a running root or V-Server.
  1. log in to the server via ssh.
  2. now you have to clone the git repo with the following command: `git clone https://github.com/OpenOlitor/openolitor-docker-compose.git`.
  3. change into the directory `cd openolitor-docker-compose`.
- 4. now the environment dev template can be copied [dev.json](dev.json) and named `prod`: `cp dev.json [ENV].json.[]`
+ 4. now the environment dev template can be copied [dev.json](dev.json) and named `prod`: `cp dev.json [ENV].json`
  5. now you can edit the [ENV].json as you like.
      - here you can e.g. set the release_variables to "latest", if you always want to have the latest version.
      - The domain name should be fitted e.g. example.de
