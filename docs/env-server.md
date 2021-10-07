@@ -21,7 +21,7 @@ Vorraussetzung ist ein laufender Root oder V-Server
      - Wichtig ist, dass man den selben Namen unter csas verwendet, wie auch die Subdomain heißt! Hier z. B. solawi-blubb
      - weiter unten können die smtp Daten für den E-Mail versand eingegeben werden.
        - Bei endpoint wird der smtp-Server eingetragen.
- 6.  Hat man alles angepasst kann man mit `python3 generator.py -e [ENV]` die Konfigurations-Dateien erstellen
+ 6.  Hat man alles angepasst, kann man mit `python3 generator.py -e [ENV]` die Konfigurations-Dateien erstellen
  7.  Alle Konfigurations-Dateien wurden erstellt wie z. B. docker-compose.[ENV].yml
  8.  Jetzt kann man die Container starten. Für den ersten Start sollte erstmal die Datenbank und der S3 Speicher alleine gestartete werden `docker-compose -f docker-compose.[ENV].yml up -d db s3`
  9.  Einen Monment warten bis alles erstellt worden ist.
