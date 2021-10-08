@@ -50,6 +50,10 @@ Good practice is:
 
  *  Configure a firewall: Don't expose the ports of the database, S3 and such to the outside.
 
+## Run on a ROOT server
+
+Simply run OpenOlitor on a ROOT server? We have [a step-by-step guide](docs/env-server.md) available.
+
 ## Insights: Services
 
 The following services are started:
