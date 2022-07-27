@@ -143,6 +143,21 @@ return 404;
 }
 ```
 
+## Update
+Um ein Update zu machen, macht man folgendes:
+1. In der Installations-Ordner wechseln. z. B. mit:
+  `cd /opt/openolitor-docker-compose/`
+2. Jetzt kann man die neuen Images runterladen und zwar mit:
+  `docker-compose pull`
+3. Dann die Container einmal neustarten. WICHTIG ist der Parameter -f und die Angabe der richtigen Docker-Compose Datei, damit die richtige config Datei genutzt wird. Mit --remove-orphans werden Reste entfert.
+ `docker-compose -f docker-compose.prod.yml up -d --remove-orphans`
+
+OPTIONAL:
+Man kann noch alte Container entfernen, damit diese keinen Speicherplatz fressen. Wichtig ist, dass alle Container die man haben möchte, gestartet sind.
+ `docker image prune`
+
+
+
 # ENGLISH Version
 Translated with www.DeepL.com
 ## Requirements
@@ -287,3 +302,16 @@ return 404;
 
 }
 ```
+
+## Update
+To make an update, do the following:
+1. change to the installation folder. e.g. with:
+  `cd /opt/openolitor-docker-compose/`.
+2. now you can download the new images with:
+  `docker-compose pull`
+3. then restart the containers once. IMPORTANT is the parameter -f and the specification of the correct docker-compose file, so that the correct config file is used. Use --remove-orphans to remove leftovers.
+ `docker-compose -f docker-compose.prod.yml up -d --remove-orphans`
+
+OPTIONAL:
+You can still remove old containers so they don't eat up disk space. It is important that all containers you want to have are started.
+ `docker image prune`
