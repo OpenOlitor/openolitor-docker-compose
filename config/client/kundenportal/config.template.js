@@ -18,8 +18,6 @@ function getConfig() {
     "API_WS_URL": "https://" + fullHostname + "/api-" + instance + "/ws",
     "ENV": env,
     "version": "{{release_kundenportal}}",
-    "AIRBREAK_API_KEY": "{{frontendAirbreakApiKey}}",
-    "AIRBREAK_URL": "{{airbreakUrl}}",
     "sendStats": true
   };
 }

@@ -9,11 +9,19 @@ services:
     {% endif %}
     environment:
       - MYSQL_ROOT_PASSWORD={{db.databaseRootPassword}}
+      - TZ=Europe/Zurich
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./config/db/db_schema.{{environment}}.sql:/docker-entrypoint-initdb.d/db_schema.sql
-    ports:
-      - "3306:3306"
+      - ./config/db/my.cnf:/etc/mysql/conf.d/docker.cnf
+      - ./config/db/certs/ca.pem:/etc/mysql/ca.pem
+      - ./config/db/certs/server-cert.pem:/etc/mysql/server-cert.pem
+      - ./config/db/certs/server-key.pem:/etc/mysql/server-key.pem
+      - ./config/db/50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.2
+
   s3:
     image: minio/minio
     restart: unless-stopped
@@ -31,10 +39,15 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.3
 
   server:
     image: openolitor/openolitor-server:{{release_server}}
     restart: unless-stopped
+    environment:
+      - TZ=Europe/Zurich
     volumes:
     # server settings
       - ./config/server/openolitor-server.{{environment}}.conf:/etc/openolitor-server/application.conf
@@ -50,6 +63,9 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.4
 
   client-admin:
     image: openolitor/openolitor-client-admin:{{release_adminportal}}
@@ -59,6 +75,9 @@ services:
     volumes:
       - ./config/client/admin/config.{{environment}}.js:/usr/share/nginx/html/environments/config.js
     ## depending on network setup
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.5
 
   client-kundenportal:
     image: openolitor/openolitor-client-kundenportal:{{release_kundenportal}}
@@ -67,11 +86,18 @@ services:
     restart: unless-stopped
     volumes:
       - ./config/client/kundenportal/config.{{environment}}.js:/usr/share/nginx/html/environments/config.js
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.6
 
   nginx:
     image: nginx:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Zurich
     ports:
       - "80:9000"
+      - "13423:13423"
     volumes:
       - ./config/nginx/nginx.{{environment}}.conf:/etc/nginx/nginx.conf
       - ./config/nginx/smtp-proxy-htpasswd:/etc/nginx/htpasswd
@@ -79,15 +105,43 @@ services:
       - client-admin
       - client-kundenportal
       - server
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.7
 
   pdf-tool:
-    image: eugenmayer/jodconverter:rest
+    image: scm.tegonal.com:3926/oo/oo-betrieb/jodconverter-openolitor:latest
+    restart: unless-stopped
     ports:
       - "9040:8080"
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.8
+
+  smtp-server:
+    image: bytemark/smtp
+    environment:
+      MAILNAME: {{smtpServerHostname}}
+    restart: always
+
   {% if smtpProxy %}
   smtp-proxy:
     image: mailhog/mailhog
+    environment:
+      - TZ=Europe/Zurich
     ports:
       - "1025:1025"
       - "8025:8025"
+    networks: 
+      ooNet:
+        ipv4_address: 172.33.0.9
   {% endif %}
+
+networks:
+  ooNet:
+    driver: bridge 
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.33.0.0/16
+          gateway: 172.33.0.1

@@ -18,8 +18,6 @@ function getConfig() {
     "API_WS_URL": "https://" + fullHostname + "/api-" + instance + "/ws",
     "ENV": env,
     "version": "{{release_adminportal}}",
-    "AIRBREAK_API_KEY": "{{frontendAirbreakApiKey}}",
-    "AIRBREAK_URL": "{{airbreakUrl}}",
     "EMAIL_TO_ADDRESS": "info@tegonal.com",
     "sendStats": true
   };
