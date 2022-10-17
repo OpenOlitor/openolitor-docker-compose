@@ -110,7 +110,7 @@ services:
         ipv4_address: 172.33.0.7
 
   pdf-tool:
-    image: scm.tegonal.com:3926/oo/oo-betrieb/jodconverter-openolitor:latest
+    image: eugenmayer/jodconverter:rest
     restart: unless-stopped
     ports:
       - "9040:8080"
