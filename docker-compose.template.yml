@@ -13,11 +13,6 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./config/db/db_schema.{{environment}}.sql:/docker-entrypoint-initdb.d/db_schema.sql
-      - ./config/db/my.cnf:/etc/mysql/conf.d/docker.cnf
-      - ./config/db/certs/ca.pem:/etc/mysql/ca.pem
-      - ./config/db/certs/server-cert.pem:/etc/mysql/server-cert.pem
-      - ./config/db/certs/server-key.pem:/etc/mysql/server-key.pem
-      - ./config/db/50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
     networks: 
       ooNet:
         ipv4_address: 172.33.0.2
