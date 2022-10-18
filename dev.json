@@ -1,16 +1,15 @@
 {
     "env":"dev",
-    "release_adminportal":"2.4.0",
-    "release_kundenportal":"2.4.0",
+    "release_adminportal":"latest",
+    "release_kundenportal":"latest",
     "release_server":"latest",
     "domain":"openolitor.ch",
-    "frontendAirbreakApiKey": "[errbit_api_key]",
-    "backendAirbreakApiKey": "[errbit_api_key]",
-    "airbreakUrl":"https://errbit.host/",
-    "airbreakUrlShort": "errbit.host",
+    "smtpServerHostname": "your-smtp.server.zzz",    
     "smtpProxy": true,
     "exposeSmtpProxy": true,
     "exposePdfTool": true,
+    "startingPort": 30000,
+    "startingWebServicePort": 31000,
     "s3": {
           "accessKey": "openolitor",
             "endpoint": "s3:9000",
@@ -36,6 +35,11 @@
         },
         "security":{
           "secondFactorAuth": "false"
+        },
+        "mail": {
+            "toAdress": "abo@yourinitiative.org",
+            "inviteExpirationTimeInDays": 90,
+            "passwordResetMessageExpirationTimeInMinutes":120
         },
         "smtp": {
             "bcc": "no-reply@openolitor.ch",

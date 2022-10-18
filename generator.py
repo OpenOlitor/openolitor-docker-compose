@@ -9,25 +9,23 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"h:e:",["env="])
     except getopt.GetoptError:
-        print ('generator.py -e [demo|test|testprod|prod|all]')
+        print ('generator.py -e [dev|yourenv|all]')
         sys.exit(2)
     if not opts:
-        print ('generator.py -e [demo|test|testprod|prod|all]')
+        print ('generator.py -e [dev|yourenv|all]')
     else:
         for opt, arg in opts:
             if opt == '-h':
-                print ('generator.py -e [test|testprod|prod|all]')
+                print ('generator.py -e [dev|yourenv|all]')
                 sys.exit()
             elif opt in ("-e", "--environment"):
                 if (arg == "all"):
-                    createTemplates("test")
-                    createTemplates("testprod")
-                    createTemplates("prod")
-                    createTemplates("demo")
+                    createTemplates("dev")
+                    createTemplates("yourenv")
                 else:
                     createTemplates(arg)
             else:
-                print ('generator.py -e [demo|test|testprod|prod|all]')
+                print ('generator.py -e [dev|yourenv|all]')
 
 
 def createTemplates(environment):
@@ -47,6 +45,7 @@ def createTemplates(environment):
                              release_server = environmentDescription["release_server"],
                              smtpProxy = environmentDescription["smtpProxy"],
                              db = environmentDescription["db"],
+                             smtpServerHostname = environmentDescription["smtpServerHostname"],
                              environment = environment)
     with open("docker-compose." + environment + ".yml", "w") as dockerComposeFile:
         dockerComposeFile.write(output)
@@ -68,8 +67,6 @@ def createTemplates(environment):
     output = template.render(csas = environmentDescription["csas"],
                              domain = environmentDescription["domain"],
                              release_adminportal = environmentDescription["release_adminportal"],
-                             frontendAirbreakApiKey = environmentDescription["frontendAirbreakApiKey"],
-                             airbreakUrl = environmentDescription["airbreakUrl"],
                              env = environmentDescription["env"])
     with open("./config/client/admin/config." + environment + ".js", "w") as dockerAdminPortalConfig:
         dockerAdminPortalConfig.write(output)
@@ -82,8 +79,6 @@ def createTemplates(environment):
     output = template.render(csas = environmentDescription["csas"],
                              domain = environmentDescription["domain"],
                              release_kundenportal = environmentDescription["release_kundenportal"],
-                             frontendAirbreakApiKey = environmentDescription["frontendAirbreakApiKey"],
-                             airbreakUrl = environmentDescription["airbreakUrl"],
                              env = environmentDescription["env"])
     with open("./config/client/kundenportal/config." + environment + ".js", "w") as dockerKundenPortalConfig:
         dockerKundenPortalConfig.write(output)
@@ -95,9 +90,9 @@ def createTemplates(environment):
 
     output = template.render(csas = environmentDescription["csas"],
                              s3 = environmentDescription["s3"],
-                             backendAirbreakApiKey = environmentDescription["backendAirbreakApiKey"],
-                             airbreakUrlShort = environmentDescription["airbreakUrlShort"],
                              domain = environmentDescription["domain"],
+                             startingPort = environmentDescription["startingPort"],
+                             startingWebServicePort = environmentDescription["startingWebServicePort"],
                              )
     with open("./config/server/openolitor-server." + environment + ".conf", "w") as   openolitorServerConfigFile:
         openolitorServerConfigFile.write(output)
