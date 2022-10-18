@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   db:
-    image: mariadb
+    image: mariadb:10.7
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=ofCourseThisIsTrueForTheRootPasswordToo
