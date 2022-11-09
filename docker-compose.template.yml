@@ -15,7 +15,7 @@ services:
       - ./config/db/db_schema.{{environment}}.sql:/docker-entrypoint-initdb.d/db_schema.sql
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.2
+        ipv4_address: 172.16.0.2
 
   s3:
     image: minio/minio:RELEASE.2022-10-24T18-35-07Z
@@ -36,7 +36,7 @@ services:
       retries: 3
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.3
+        ipv4_address: 172.16.0.3
 
   server:
     image: openolitor/openolitor-server:{{release_server}}
@@ -60,7 +60,7 @@ services:
       retries: 3
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.4
+        ipv4_address: 172.16.0.4
 
   client-admin:
     image: openolitor/openolitor-client-admin:{{release_adminportal}}
@@ -72,7 +72,7 @@ services:
     ## depending on network setup
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.5
+        ipv4_address: 172.16.0.5
 
   client-kundenportal:
     image: openolitor/openolitor-client-kundenportal:{{release_kundenportal}}
@@ -83,7 +83,7 @@ services:
       - ./config/client/kundenportal/config.{{environment}}.js:/usr/share/nginx/html/environments/config.js
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.6
+        ipv4_address: 172.16.0.6
 
   nginx:
     image: nginx:latest
@@ -102,7 +102,7 @@ services:
       - server
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.7
+        ipv4_address: 172.16.0.7
 
   pdf-tool:
     image: eugenmayer/jodconverter:rest
@@ -111,7 +111,7 @@ services:
       - "9040:8080"
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.8
+        ipv4_address: 172.16.0.8
 
   smtp-server:
     image: bytemark/smtp
@@ -129,7 +129,7 @@ services:
       - "8025:8025"
     networks: 
       ooNet:
-        ipv4_address: 172.33.0.9
+        ipv4_address: 172.16.0.9
   {% endif %}
 
 networks:
@@ -138,5 +138,5 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.33.0.0/16
-          gateway: 172.33.0.1
+        - subnet: 172.16.0.0/16
+          gateway: 172.16.0.1

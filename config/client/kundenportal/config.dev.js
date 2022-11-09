@@ -2,7 +2,7 @@
 
 function getConfig() {
   var fullHostname = window.location.hostname;
-  var instance = fullHostname.replace(".openolitor.ch", "");
+  var instance = fullHostname.replace(".server.zzz", "");
 
   var env = "dev";
   

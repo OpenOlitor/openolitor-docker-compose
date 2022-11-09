@@ -3,7 +3,7 @@
     "release_adminportal":"latest",
     "release_kundenportal":"latest",
     "release_server":"latest",
-    "domain":"openolitor.ch",
+    "domain":"server.zzz",
     "smtpServerHostname": "your-smtp.server.zzz",    
     "smtpProxy": true,
     "exposeSmtpProxy": true,
@@ -11,13 +11,13 @@
     "startingPort": 30000,
     "startingWebServicePort": 31000,
     "s3": {
-          "accessKey": "openolitor",
-            "endpoint": "s3:9000",
-            "secret": "uGuRR53g4uR6c8R4yCxfNwFF"
+        "accessKey": "openolitor",
+        "endpoint": "s3:9000",
+        "secret": "uGuRR53g4uR6c8R4yCxfNwFF"
     },
     "db": {
-            "databaseRootPassword": "AaFpqD6uCY5F",
-            "memLimit": "300m"
+        "databaseRootPassword": "AaFpqD6uCY5F",
+        "memLimit": "300m"
     },
     "csas": [{
         "name": "csa1",
@@ -26,8 +26,12 @@
             "teilnehmernummer": "333333"
         },
         "db": {
-            "databaseUser": "user_csa1",
-            "databasePassword": "ebAwP4c65dqW",
+            "databaseInternalUser": "user_csa1",
+            "databaseReadOnlyUser": "external_user_csa1",
+            "databaseAdmin": "admin_csa1",
+            "databaseInternalUserPassword": "ebAwP4c65dqW",
+            "databaseReadOnlyUserPassword": "a7weFh7aPiu2",
+            "databaseAdminPassword": "489aZ0aLa8mn7hyY6a01GQh",
             "databaseName": "csa1"
         },
         "pdfCreator": {
