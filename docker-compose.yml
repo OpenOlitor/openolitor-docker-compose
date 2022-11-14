@@ -112,13 +112,6 @@ services:
       ooNet:
         ipv4_address: 172.16.0.8
 
-  smtp-server:
-    image: bytemark/smtp
-    environment:
-      MAILNAME: your-smtp.server.zzz
-    restart: always
-
-  
   smtp-proxy:
     image: mailhog/mailhog
     environment:
